@@ -6,7 +6,6 @@ import { services } from '../assets/data';
 
 const ServiceList = () => {
     const [selected, setSelected] = useState(null);
-    // let styleClass = selected != null ? 'select_style' : 'init_mode';
 
     const handleChange = (data) => {
         setSelected(data.row);
@@ -47,9 +46,9 @@ const ServiceList = () => {
     if (selected) {
         return (
             <div className='rapidoc'>
-                <Select className='select_style' onChange={handleSelectChange}  options={services} defaultValue={{value: selected.value, label: selected.label}}>
+                <Select className='select_style' onChange={handleSelectChange} options={services} defaultValue={{value: selected.value, label: selected.label}}>
                 </Select>
-                <rapi-doc style={{ "height":"600px", "overflow":"scroll" }}
+                <rapi-doc
                     spec-url={selected.value}
                     theme="light"
                 ></rapi-doc>
@@ -60,7 +59,6 @@ const ServiceList = () => {
             <>
             <PageTitle/>
             <div className='servicesList'>
-                
                 <DataGrid
                     rows={services}
                     columns={columns}
@@ -70,7 +68,6 @@ const ServiceList = () => {
                     disableSelectionOnClick
                     onRowClick={handleChange}
                 />
-
             </div>
             </>
         )
